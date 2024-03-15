@@ -26,12 +26,12 @@ def PaginaNoEncontrada(error):
 
 if __name__ == "__main__":
     # DEV 
-    app.register_error_handler(404, PaginaNoEncontrada)
-    app.run(debug=True)
+    #app.register_error_handler(404, PaginaNoEncontrada)
+    #app.run(debug=True)
 
     #PROD
-    #app.register_error_handler(404, PaginaNoEncontrada)
-    #app.run(host='0.0.0.0', port=80)
+    app.register_error_handler(404, PaginaNoEncontrada)
+    app.run(host='0.0.0.0', port=80)
 
     #port = int(os.environ.get('PORT', 5000))
     #app.config.from_object(config['development'])
