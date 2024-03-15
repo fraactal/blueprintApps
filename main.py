@@ -10,7 +10,6 @@ app.register_blueprint(calculator_bp, url_prefix = "/calculator")
 
 
 
-
 @app.route('/about')
 def about():
     return render_template('about.html')
@@ -18,16 +17,23 @@ def about():
 
 ################ Handler Page ########################
 
-def PaginaNoEncontrada():
+def PaginaNoEncontrada(error):
     return "<h1>La URL que intentas buscar no existe..</h1>" , 404
 
 
 ################ Running App ########################
 
 if __name__ == "__main__":
+    # DEV 
+    app.register_error_handler(404, PaginaNoEncontrada)
+    app.run(debug=True)
+
+
+    #PROD
+    #app.register_error_handler(404, PaginaNoEncontrada)
+    #app.run(host='0.0.0.0', port=80)
+
     #port = int(os.environ.get('PORT', 5000))
     #app.config.from_object(config['development'])
-    app.register_error_handler(404, PaginaNoEncontrada)
-    #app.run(host='0.0.0.0', port=80)
-    app.run(host='0.0.0.0', port=443, ssl_context='adhoc')
+    #app.run(host='0.0.0.0', port=443, ssl_context='adhoc')
     #app.run(host='0.0.0.0', ssl_context='adhoc')
