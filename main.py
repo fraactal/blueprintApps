@@ -2,12 +2,15 @@ from flask import Flask, render_template
 import os
 from blueprint.helloworld.helloworld import helloworld_bp
 from blueprint.calculator.calculator import calculator_bp
+from blueprint.cooperativa.cooperativa import cooperativa_bp
 from blueprint.bootstrap_completo.bootstrap_completo import bootstrap_completo_bp
 
 app = Flask(__name__)
 app.register_blueprint(helloworld_bp)
 app.register_blueprint(calculator_bp, url_prefix = "/calculator")
 app.register_blueprint(bootstrap_completo_bp, url_prefix = "/bs")
+app.register_blueprint(cooperativa_bp, url_prefix = "/cooperativa")
+# Add folders with blueprint
 
 
 
